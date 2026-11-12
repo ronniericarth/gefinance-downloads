@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacidade | GeFinance</title>
+  <meta name="description" content="Como o GeFinance trata dados pessoais, nas versões instalada e online.">
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="topo">
+  <div class="largura topo-linha">
+    <a class="marca" href="./" aria-label="GeFinance, início"><img src="img/logo.png" width="32" height="32" alt=""><span>GeFinance</span></a>
+    <nav class="nav" aria-label="Seções">
+      <a href="./#recursos">Recursos</a>
+      <a href="./#precos">Preços</a>
+      <a href="./#duvidas">Dúvidas</a>
+    </nav>
+    <a class="botao botao-pequeno" href="https://app.gefinance.app.br">Criar conta grátis</a>
+  </div>
+</header>
+<main class="largura documento">
+  <h1>Privacidade</h1>
+  <p class="atualizado">Atualizado em 11 de novembro de 2026.</p>
+
+  <h2>Quem somos</h2>
+  <p>Ronnie Ricarth Cabral Granja LTDA, inscrita no CNPJ 53.668.092/0001-49, pelo e-mail
+    <a href="mailto:contato@gefinance.app.br">contato@gefinance.app.br</a> ou pelo WhatsApp
+    <a href="https://wa.me/5533999359508" target="_blank" rel="noopener">(33) 99935-9508</a>. É para esse mesmo
+    contato que você deve escrever sobre qualquer assunto desta página.</p>
+
+  <h2>Dois papéis diferentes</h2>
+  <p>Vale separar duas coisas, porque a lei as trata de forma diferente:</p>
+  <ul>
+    <li><strong>Os dados que você lança no sistema</strong> (lançamentos, contas, clientes, fornecedores, usuários).
+      Quem decide o que entra ali é você: você é o controlador desses dados. Na versão online, nós apenas os guardamos
+      e processamos por sua conta, seguindo suas instruções — somos o operador.</li>
+    <li><strong>Os dados do seu cadastro conosco</strong> (nome ou empresa, e-mail, pagamento). Desses nós somos os
+      controladores, e é deles que trata a maior parte desta página.</li>
+  </ul>
+
+  <h2>Versão instalada: seus dados ficam com você</h2>
+  <p>Na versão instalada no seu computador ou servidor, os lançamentos, contas, extratos importados, relatórios e
+    usuários ficam no banco de dados da sua máquina. Não recebemos, não guardamos e não temos acesso a eles.</p>
+  <p>O programa verifica periodicamente se há versão nova, consultando a página pública de versões no GitHub. Essa
+    consulta não envia dados financeiros nem dados pessoais, e pode ser desligada na configuração.</p>
+
+  <h2>Versão online: onde seus dados ficam</h2>
+  <p>Na versão online, os dados do seu sistema ficam em um banco de dados PostgreSQL em servidores contratados por nós
+    junto à ShardCloud. Cada cliente tem sua própria área separada dentro do banco: uma consulta feita na sua conta
+    não alcança os dados de outro cliente, e vice-versa.</p>
+  <p>O acesso ao sistema exige login e senha, e as senhas são guardadas como código irreversível (hash), nunca em
+    texto. A conexão com o navegador é cifrada (HTTPS).</p>
+  <p><strong>Quando nós acessamos seus dados:</strong> apenas quando necessário para operar o serviço ou para atender
+    um pedido de suporte seu — por exemplo, para corrigir um problema que você relatou. Não usamos seus dados
+    financeiros para nenhuma outra finalidade, não os vendemos e não os compartilhamos com terceiros para
+    publicidade.</p>
+
+  <h2>O que coletamos de você</h2>
+  <table>
+    <thead><tr><th>Dado</th><th>Para quê</th><th>Base legal</th></tr></thead>
+    <tbody>
+      <tr><td>Nome (seu ou da empresa), e-mail e endereço escolhido</td><td>Criar e manter sua conta, enviar sua senha e
+        avisos sobre o serviço</td><td>Execução do contrato</td></tr>
+      <tr><td>Data do aceite dos termos</td><td>Comprovar que o contrato foi aceito</td><td>Cumprimento de obrigação
+        legal</td></tr>
+      <tr><td>Dados de pagamento</td><td>Cobrar a assinatura. O cartão é informado no Mercado Pago e não passa pelo
+        GeFinance; recebemos apenas a confirmação de que o pagamento ocorreu</td><td>Execução do contrato</td></tr>
+      <tr><td>Registros de acesso (endereço IP, data e hora)</td><td>Segurança, investigação de abuso e cumprimento do
+        Marco Civil da Internet</td><td>Obrigação legal</td></tr>
+      <tr><td>Mensagens que você nos envia</td><td>Responder e registrar o atendimento</td><td>Execução do
+        contrato</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Com quem compartilhamos</h2>
+  <p>Só com quem é necessário para o serviço funcionar, e apenas no que cada um precisa:</p>
+  <ul>
+    <li><strong>ShardCloud</strong> — hospedagem do sistema e do banco de dados na versão online.</li>
+    <li><strong>Mercado Pago</strong> — processamento dos pagamentos, conforme a política de privacidade deles.</li>
+    <li><strong>ImprovMX</strong> — encaminhamento das mensagens enviadas aos nossos endereços de e-mail.</li>
+    <li><strong>GitHub</strong> — hospedagem deste site e dos arquivos de instalação.</li>
+  </ul>
+  <p>Não vendemos nem cedemos seus dados a ninguém. Fora dessa lista, só compartilhamos se a lei ou uma ordem judicial
+    exigir.</p>
+
+  <h2>Por quanto tempo guardamos</h2>
+  <p>Os dados do seu sistema são guardados enquanto sua conta existir e por mais 90 dias após o encerramento ou o
+    vencimento sem renovação, período em que você pode pedir uma cópia ou reativar a conta. Depois disso são apagados
+    em definitivo.</p>
+  <p>Os registros de acesso são guardados por 6 meses, como determina o Marco Civil da Internet. Dados de cobrança e
+    documentos fiscais são guardados pelo prazo que a legislação fiscal exige.</p>
+
+  <h2>Seus direitos</h2>
+  <p>A Lei Geral de Proteção de Dados (LGPD) garante que você possa, a qualquer momento: confirmar se tratamos dados
+    seus; acessá-los; corrigir dados incompletos ou errados; pedir a exclusão; pedir uma cópia em formato legível por
+    outro sistema; saber com quem compartilhamos; e revogar consentimento, quando o tratamento se basear nele.</p>
+  <p>Escreva para <a href="mailto:contato@gefinance.app.br">contato@gefinance.app.br</a>. Respondemos em até 15 dias.
+    Se não ficar satisfeito, você pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
+
+  <h2>Crianças e adolescentes</h2>
+  <p>O GeFinance é um sistema para uso pessoal e de empresas, e não se destina a menores de 18 anos.</p>
+
+  <h2>Este site</h2>
+  <p>Este site não usa cookies nem ferramentas de rastreamento. Ele é hospedado no GitHub Pages e usa fontes do Google
+    Fonts; esses serviços podem registrar dados técnicos de acesso, como o endereço IP, conforme as políticas
+    deles.</p>
+
+  <h2>Mudanças nesta política</h2>
+  <p>Podemos atualizar esta página. Mudanças relevantes são avisadas por e-mail. A data da última atualização está no
+    topo.</p>
+</main>
+<footer class="rodape">
+  <div class="largura rodape-linha">
+    <div>
+      <a class="marca" href="./"><img src="img/logo.png" width="24" height="24" alt=""><span>GeFinance</span></a>
+      <p>Dúvidas, compra e suporte: <a href="mailto:contato@gefinance.app.br">contato@gefinance.app.br</a><br>
+        WhatsApp: <a href="https://wa.me/5533999359508" target="_blank" rel="noopener">(33) 99935-9508</a></p>
+      <p class="cnpj">Ronnie Ricarth Cabral Granja LTDA · CNPJ 53.668.092/0001-49</p>
+    </div>
+    <nav aria-label="Documentos">
+      <a href="termos.html">Termos de uso</a>
+      <a href="privacidade.html">Privacidade</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

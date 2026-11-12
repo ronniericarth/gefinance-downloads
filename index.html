@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeFinance: controle financeiro pessoal e da sua empresa</title>
+  <meta name="description" content="Controle financeiro para a sua casa e para o seu negócio: despesas, receitas, cartões, fluxo de caixa, orçamento e relatórios, a partir do extrato do banco. Use online, sem instalar nada, ou instalado no seu computador. Teste 7 dias grátis, sem cartão.">
+  <link rel="icon" type="image/png" href="img/logo.png">
+  <meta property="og:title" content="GeFinance: controle financeiro pessoal e da sua empresa">
+  <meta property="og:description" content="As contas da casa e do negócio em ordem: despesas, receitas, fluxo de caixa, orçamento e relatórios. Online ou instalado. Teste 7 dias grátis, sem cartão.">
+  <meta property="og:image" content="https://gefinance.app.br/img/tela-dashboard.webp">
+  <meta property="og:url" content="https://gefinance.app.br/">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="largura topo-linha">
+    <a class="marca" href="#" aria-label="GeFinance, início"><img src="img/logo.png" width="32" height="32" alt=""><span>GeFinance</span></a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#para-quem">Para quem</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#telas">Telas</a>
+      <a href="#seguranca">Segurança</a>
+      <a href="#precos">Preços</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="https://app.gefinance.app.br/login.html">Entrar</a>
+    </nav>
+    <a class="botao botao-pequeno" href="https://app.gefinance.app.br/cadastro">Criar conta grátis</a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ===== abertura ===== -->
+  <section class="abertura largura">
+    <div class="abertura-texto">
+      <h1>Seu dinheiro em ordem, em casa e na empresa.</h1>
+      <p class="lead">Importe o extrato do banco e veja para onde vai cada real: despesas, receitas, cartões, fluxo de
+        caixa e orçamento. Serve para as contas da família e para o financeiro do seu negócio, direto no navegador,
+        sem instalar nada.</p>
+      <div class="acoes">
+        <a class="botao" href="https://app.gefinance.app.br/cadastro">Criar conta grátis</a>
+        <a class="botao botao-linha" href="#telas">Ver o sistema por dentro</a>
+      </div>
+      <ul class="garantias">
+        <li>7 dias grátis</li>
+        <li>Sem cartão de crédito</li>
+        <li>Cancele quando quiser</li>
+      </ul>
+    </div>
+
+    <div class="palco">
+      <div class="troca" role="group" aria-label="Exemplo de extrato">
+        <button type="button" data-exemplo="casa" aria-pressed="true">Em casa</button>
+        <button type="button" data-exemplo="empresa" aria-pressed="false">Na empresa</button>
+      </div>
+      <figure class="extrato" aria-label="Exemplo: lançamentos de um extrato bancário sendo classificados por categoria">
+        <figcaption class="extrato-topo">
+          <span>Extrato importado</span>
+          <span class="extrato-conta" id="extratoConta">Conta pessoal, novembro</span>
+        </figcaption>
+        <ol class="extrato-linhas" id="extratoLinhas">
+          <li data-tipo="saida" style="--i:0">
+            <span class="dia">03/11</span>
+            <span class="desc"><span class="bruto">COMPRA CARTAO SUPERM SAO JOAO</span><span class="classe">Supermercado</span></span>
+            <span class="valor">−478,15</span>
+          </li>
+          <li data-tipo="entrada" style="--i:1">
+            <span class="dia">05/11</span>
+            <span class="desc"><span class="bruto">CRED SALARIO 0001 FOLHA PGTO</span><span class="classe">Salário</span></span>
+            <span class="valor">+6.200,00</span>
+          </li>
+          <li data-tipo="saida" style="--i:2">
+            <span class="dia">05/11</span>
+            <span class="desc"><span class="bruto">PAG BOLETO COND RES DAS FLORES</span><span class="classe">Condomínio</span></span>
+            <span class="valor">−780,00</span>
+          </li>
+          <li data-tipo="saida" style="--i:3">
+            <span class="dia">06/11</span>
+            <span class="desc"><span class="bruto">DEB AUTOMATICO COLEGIO ABC</span><span class="classe">Escola das crianças</span></span>
+            <span class="valor">−1.150,00</span>
+          </li>
+          <li data-tipo="saida" style="--i:4">
+            <span class="dia">07/11</span>
+            <span class="desc"><span class="bruto">COMPRA DEB DROGARIA CENTRAL</span><span class="classe">Farmácia</span></span>
+            <span class="valor">−96,40</span>
+          </li>
+        </ol>
+        <div class="extrato-rodape">
+          <span>Saldo do período</span>
+          <strong class="saldo" id="extratoSaldo">+3.695,45</strong>
+        </div>
+      </figure>
+      <div class="cartao-solto solto-vence" aria-hidden="true">
+        <span class="rotulo">Vence amanhã</span>
+        <span class="linha-solta" id="venceLinha"><b>Fatura do cartão</b><span class="sai">R$ 1.284,30</span></span>
+      </div>
+      <!-- o mesmo sistema no celular: a versão online abre em qualquer navegador -->
+      <div class="celular" aria-hidden="true">
+        <div class="celular-tela">
+          <div class="cel-topo"><b>Dashboard</b><span>Novembro</span></div>
+          <div class="cel-saldo"><span>Saldo atual</span><strong data-contar="74153.81" data-prefixo="R$ ">R$ 74.153,81</strong><small>3 contas</small></div>
+          <div class="cel-par">
+            <span><small>Receitas</small><b class="entra">10.651,67</b></span>
+            <span><small>Despesas</small><b class="sai">938,57</b></span>
+          </div>
+          <div class="cel-lista">
+            <span class="cel-titulo">Próximos vencimentos</span>
+            <span class="cel-linha"><i>10/11</i><span>Condomínio</span><b>480,00</b></span>
+            <span class="cel-linha"><i>12/11</i><span>Energia</span><b>214,60</b></span>
+            <span class="cel-linha"><i>15/11</i><span>Internet</span><b>129,90</b></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="largura">
+    <p class="faixa-arquivos">Funciona com o extrato de qualquer banco, nos formatos
+      <span class="ficha">OFX</span><span class="ficha">CSV</span><span class="ficha">PDF</span>
+      e com a fatura do cartão.</p>
+  </div>
+
+  <!-- ===== para quem ===== -->
+  <section id="para-quem" class="secao largura">
+    <h2>Um sistema, dois jeitos de usar</h2>
+    <p class="intro">O mesmo GeFinance organiza a vida financeira da casa e a do negócio. Dá para usar nos dois, em
+      contas separadas.</p>
+    <div class="publicos">
+      <article class="publico publico-casa">
+        <span class="publico-icone" aria-hidden="true"><svg viewBox="0 0 48 48"><path pathLength="1" d="M8 22 24 9l16 13v16a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3z"/><path class="porta" pathLength="1" d="M20 41V29h8v12"/></svg></span>
+        <h3>Para você e sua família</h3>
+        <p>Saiba quanto entra, quanto sai e o que dá para guardar no fim do mês.</p>
+        <ul class="lista-certa">
+          <li>Salário, contas da casa, escola e cartão no mesmo lugar</li>
+          <li>Orçamento por categoria, mostrando o que passou do planejado</li>
+          <li>Fatura do cartão importada, compra por compra</li>
+          <li>O casal dividindo o acesso, cada um com seu usuário</li>
+        </ul>
+      </article>
+      <article class="publico publico-empresa">
+        <span class="publico-icone" aria-hidden="true"><svg viewBox="0 0 48 48"><rect pathLength="1" x="7" y="15" width="34" height="25" rx="4"/><path class="porta" pathLength="1" d="M18 15v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M7 26h34"/></svg></span>
+        <h3>Para o seu negócio</h3>
+        <p>Do autônomo à pequena empresa: o caixa de hoje e o que vem pela frente.</p>
+        <ul class="lista-certa">
+          <li>Contas a pagar e a receber, com vencimentos</li>
+          <li>Fluxo de caixa e projeção dos próximos dias</li>
+          <li>DRE gerencial e orçado x realizado, em Excel ou PDF</li>
+          <li>Equipe com permissão por tela: quem consulta, quem lança, quem exclui</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== como começar (é uma sequência) ===== -->
+  <section id="como" class="secao largura">
+    <h2>Do extrato ao relatório em três passos</h2>
+    <ol class="passos">
+      <li><h3>Crie a conta</h3><p>Informe o seu nome, ou o da empresa, e escolha o link do seu GeFinance. A senha chega no seu
+        e-mail em seguida.</p></li>
+      <li><h3>Traga seus números</h3><p>Importe o extrato do banco e a fatura do cartão. Em poucos minutos você vê
+        o fluxo de caixa e os relatórios com os seus dados de verdade.</p></li>
+      <li><h3>Assine quando decidir</h3><p>Ao fim dos 7 dias, assine dentro do próprio sistema. A conta é liberada
+        na hora e nada do que você lançou se perde.</p></li>
+    </ol>
+  </section>
+
+  <!-- ===== recursos ===== -->
+  <section id="recursos" class="secao largura">
+    <h2>O que você passa a controlar</h2>
+    <p class="intro">Tudo no mesmo lugar, com os números que saem do seu banco, não de uma planilha digitada à mão.</p>
+
+    <div class="mosaico">
+      <article class="peca peca-larga peca-azul">
+        <h3>Importação de extratos</h3>
+        <p>Traga o arquivo do banco em OFX, CSV ou PDF. O GeFinance reconhece o que já entrou e não duplica nada.</p>
+        <div class="mini mini-importa" aria-hidden="true">
+          <span class="arquivo">extrato-novembro.ofx</span>
+          <span class="seta-importa"></span>
+          <ul>
+            <li><span>Supermercado</span><b class="sai">−478,15</b></li>
+            <li><span>Serviços prestados</span><b class="entra">+9.800,00</b></li>
+            <li class="repetida"><span>Aluguel</span><i>já importado</i></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="peca">
+        <h3>Contas a pagar e a receber</h3>
+        <p>Vencimento, situação e conta de cada lançamento. Pague várias de uma vez e estorne se errar.</p>
+        <div class="mini mini-contas" aria-hidden="true">
+          <ul>
+            <li style="--n:0"><span class="caixa marcada"></span><span>Energia</span><b>R$ 412,90</b></li>
+            <li style="--n:1"><span class="caixa marcada"></span><span>Internet</span><b>R$ 129,90</b></li>
+            <li><span class="caixa"></span><span>Escola</span><b>R$ 1.150,00</b></li>
+          </ul>
+          <span class="botao-mini">Pagar 2 selecionadas</span>
+        </div>
+      </article>
+
+      <article class="peca">
+        <h3>Fluxo de caixa</h3>
+        <p>O saldo dia a dia, por conta ou de todas juntas, com o que ainda vai entrar e sair.</p>
+        <div class="mini mini-fluxo" aria-hidden="true">
+          <svg viewBox="0 0 280 96" preserveAspectRatio="none">
+            <path class="area" d="M0 70 L40 62 L80 66 L120 40 L160 48 L200 26 L240 32 L280 14 L280 96 L0 96 Z"/>
+            <path class="linha" pathLength="1" d="M0 70 L40 62 L80 66 L120 40 L160 48 L200 26 L240 32 L280 14"/>
+          </svg>
+          <span class="legenda-mini">Saldo previsto em 30/11 <b class="entra" data-contar="12340" data-prefixo="R$ ">R$ 12.340,00</b></span>
+        </div>
+      </article>
+
+      <article class="peca">
+        <h3>Orçamento por categoria</h3>
+        <p>Defina quanto pretende gastar e veja, durante o mês, o que já passou do planejado.</p>
+        <div class="mini mini-orcamento" aria-hidden="true">
+          <div class="barra" style="--n:0"><span>Alimentação</span><i style="--p:62%"></i><b>62%</b></div>
+          <div class="barra" style="--n:1"><span>Transporte</span><i style="--p:88%"></i><b>88%</b></div>
+          <div class="barra estourou" style="--n:2"><span>Lazer</span><i style="--p:100%"></i><b>114%</b></div>
+        </div>
+      </article>
+
+      <article class="peca">
+        <h3>Relatórios prontos</h3>
+        <p>Despesas por categoria, resultado do mês, projeção de caixa e orçado x realizado. Na empresa, DRE gerencial.</p>
+        <div class="mini mini-relatorio" aria-hidden="true">
+          <ul>
+            <li><span>Receitas</span><b class="entra" data-contar="28450">28.450,00</b></li>
+            <li><span>Despesas</span><b class="sai" data-contar="19870">19.870,00</b></li>
+            <li class="total"><span>Resultado</span><b data-contar="8580">8.580,00</b></li>
+          </ul>
+          <span class="fichas"><span class="ficha">Excel</span><span class="ficha">PDF</span></span>
+        </div>
+      </article>
+
+      <article class="peca">
+        <h3>Faturas de cartão</h3>
+        <p>Importe a fatura em PDF ou CSV: cada compra vira uma despesa, na categoria certa.</p>
+        <div class="mini mini-cartao" aria-hidden="true">
+          <span class="fatura">Fatura de novembro <b>R$ 3.214,77</b></span>
+          <ul>
+            <li><span>Posto Rio</span><b>295,02</b></li>
+            <li><span>Restaurante Sabor</span><b>186,40</b></li>
+            <li><span>Streaming de música</span><b>21,90</b></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="peca peca-larga peca-lado">
+        <h3>Família ou equipe, cada um com o seu acesso</h3>
+        <p>Vários usuários, com permissão por tela: quem só consulta, quem lança e quem pode excluir. Parcelas e
+          contas fixas se repetem nos meses seguintes com um clique, e transferências entre contas não viram despesa.</p>
+        <div class="mini mini-equipe" aria-hidden="true">
+          <span class="pessoa"><i>AM</i><span>Ana<small>Administradora</small></span></span>
+          <span class="pessoa"><i>RP</i><span>Rafael<small>Lança e paga</small></span></span>
+          <span class="pessoa"><i>CS</i><span>Carla<small>Só consulta</small></span></span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== telas ===== -->
+  <section id="telas" class="secao telas-secao">
+    <div class="largura">
+      <h2>Por dentro do GeFinance</h2>
+      <p class="intro">O sistema real, com dados de exemplo. Tema claro, escuro ou automático.</p>
+      <div class="abas" role="tablist" aria-label="Telas do sistema">
+        <button role="tab" id="aba-dashboard" aria-controls="painel-tela" aria-selected="true" data-tela="dashboard" data-video="dashboard" data-legenda="Dashboard: o resumo do mês, o que vence nos próximos dias, gráficos e o tema escuro.">Dashboard</button>
+        <button role="tab" id="aba-despesas" aria-controls="painel-tela" aria-selected="false" tabindex="-1" data-tela="despesas" data-video="despesas" data-legenda="Despesas: busque, marque várias e pague todas de uma vez.">Despesas</button>
+        <button role="tab" id="aba-importacao" aria-controls="painel-tela" aria-selected="false" tabindex="-1" data-tela="importacao" data-video="importacao" data-legenda="Importar extrato: traga o arquivo do banco, classifique as linhas e importe.">Importar extrato</button>
+        <button role="tab" id="aba-relatorios" aria-controls="painel-tela" aria-selected="false" tabindex="-1" data-tela="relatorios" data-video="relatorios" data-legenda="Relatórios: despesas por categoria e DRE gerencial, prontos para exportar em Excel ou PDF.">Relatórios</button>
+        <button role="tab" id="aba-fluxo" aria-controls="painel-tela" aria-selected="false" tabindex="-1" data-tela="fluxo" data-legenda="Fluxo de caixa: cada entrada e saída do período com o saldo do dia.">Fluxo de caixa</button>
+        <button role="tab" id="aba-orcamento" aria-controls="painel-tela" aria-selected="false" tabindex="-1" data-tela="orcamento" data-legenda="Orçamento: quanto você planejou gastar em cada categoria e quanto já foi.">Orçamento</button>
+      </div>
+      <figure class="tela" id="painel-tela" role="tabpanel" aria-labelledby="aba-dashboard">
+        <div class="janela">
+          <img id="imgTela" src="img/tela-dashboard.webp" width="1600" height="1000" alt="Tela do GeFinance: Dashboard" loading="lazy">
+          <video id="vidTela" width="1280" height="800" muted loop playsinline preload="none" hidden
+                 aria-label="Vídeo: o GeFinance em uso"></video>
+          <button type="button" id="btnVideo" class="btn-video" hidden aria-label="Pausar vídeo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-pausa" d="M7 5h3v14H7zM14 5h3v14h-3z"/><path class="i-tocar" d="M8 5l11 7-11 7z"/></svg>
+          </button>
+        </div>
+        <figcaption id="legendaTela">Dashboard: o resumo do mês, o que vence nos próximos dias, gráficos e o tema escuro.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== segurança ===== -->
+  <section id="seguranca" class="secao largura">
+    <div class="seguranca">
+      <div class="seguranca-texto">
+        <h2>Seus números, bem guardados</h2>
+        <p class="intro">O que está no GeFinance é seu. O sistema foi feito para continuar assim.</p>
+        <div class="cadeado" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><rect x="22" y="52" width="76" height="56" rx="14"/><path d="M38 52V38a22 22 0 0 1 44 0v14" fill="none" stroke-width="10" stroke-linecap="round"/><circle cx="60" cy="78" r="7"/><path d="M60 82v10" stroke-width="6" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+      <ul class="garantias-lista">
+        <li>
+          <h3>Um espaço só seu</h3>
+          <p>Na versão online, cada conta tem o próprio banco de dados, separado dos demais. Uma consulta feita na
+            sua conta não alcança os dados de outro cliente.</p>
+        </li>
+        <li>
+          <h3>Senha que nem nós conseguimos ler</h3>
+          <p>As senhas são guardadas como código irreversível, nunca em texto, e a conexão com o navegador é
+            cifrada (HTTPS).</p>
+        </li>
+        <li>
+          <h3>Cada pessoa vê o que deve</h3>
+          <p>Permissão por tela para cada usuário: quem só consulta, quem lança e quem pode excluir.</p>
+        </li>
+        <li>
+          <h3>Seus dados saem com você</h3>
+          <p>Em <b>Sistema &gt; Meus dados</b> você baixa tudo o que lançou, quando quiser, e leva para outro
+            computador ou para a outra forma de usar.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== duas formas de usar ===== -->
+  <section id="formas" class="secao largura">
+    <h2>Online ou no seu computador</h2>
+    <p class="intro">O sistema é o mesmo nas duas formas: as mesmas telas, os mesmos relatórios, o mesmo preço.
+      Muda só onde ele roda.</p>
+    <div class="formas">
+      <article class="forma forma-online">
+        <h3>Online</h3>
+        <p>Você cria a conta e usa pelo navegador, de qualquer computador ou celular.</p>
+        <ul class="lista-certa">
+          <li>Nada para instalar ou atualizar</li>
+          <li>Cada conta tem seu próprio banco de dados, separado dos demais</li>
+          <li>As cópias de segurança ficam por nossa conta</li>
+        </ul>
+        <a class="botao" href="https://app.gefinance.app.br/cadastro">Criar conta grátis</a>
+      </article>
+      <article class="forma">
+        <h3>Instalada</h3>
+        <p>O sistema roda no seu computador ou no servidor da empresa, e os dados ficam lá.</p>
+        <ul class="lista-certa">
+          <li>Funciona sem internet</li>
+          <li>Os outros computadores da rede acessam pelo navegador</li>
+          <li>Backup automático todo dia, na pasta que você escolher</li>
+        </ul>
+        <a class="botao botao-linha" href="#download">Baixar o instalador</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== preços ===== -->
+  <section id="precos" class="secao precos-secao">
+    <div class="largura">
+      <h2>Um preço só, com tudo incluído</h2>
+      <p class="intro">Mesmo preço nas duas formas de usar, com todos os recursos e as atualizações.
+        Comece com 7 dias grátis e assine quando decidir.</p>
+      <div class="planos">
+        <article class="plano plano-anual">
+          <span class="selo">Economize R$ 25,20 no ano</span>
+          <h3>Anual</h3>
+          <p class="preco"><span class="moeda">12x de R$</span> <span class="numero">19,90</span></p>
+          <p class="preco-detalhe">R$ 238,80 por 12 meses, em até 12x sem juros no cartão, Pix ou boleto.</p>
+          <ul class="lista-certa">
+            <li>Todos os recursos e relatórios</li>
+            <li>Usuários com permissões por tela</li>
+            <li>Atualizações incluídas</li>
+          </ul>
+          <a class="botao" href="https://app.gefinance.app.br/cadastro">Começar com 7 dias grátis</a>
+        </article>
+        <article class="plano">
+          <h3>Mensal</h3>
+          <p class="preco"><span class="moeda">R$</span> <span class="numero">22,00</span> <span class="moeda">por mês</span></p>
+          <p class="preco-detalhe">Renovação a cada mês. Cancele quando quiser, sem multa.</p>
+          <ul class="lista-certa">
+            <li>Todos os recursos e relatórios</li>
+            <li>Usuários com permissões por tela</li>
+            <li>Atualizações incluídas</li>
+          </ul>
+          <a class="botao botao-linha" href="https://app.gefinance.app.br/cadastro">Começar com 7 dias grátis</a>
+        </article>
+      </div>
+      <aside class="por-que">
+        <h3>Por que o GeFinance é pago?</h3>
+        <p>Porque quem paga é você, e é para você que ele trabalha: sem anúncios, e seus dados não são vendidos nem
+          repassados a ninguém. A assinatura paga o sistema e as atualizações.</p>
+      </aside>
+      <p class="nota">Na versão online você assina dentro do próprio sistema, quando quiser, e a conta é liberada
+        na hora. Na versão instalada, a assinatura vale para uma instalação, e os outros computadores e celulares da
+        mesma rede usam ela pelo navegador:
+        <a href="https://mpago.li/1az22UW" target="_blank" rel="noopener">assinar o anual</a> ou
+        <a id="lnkMensal" href="https://mpago.la/18Rvozc" target="_blank" rel="noopener">o mensal</a>.</p>
+      <p class="nota">Dúvidas antes de assinar? Chame no WhatsApp: <a href="https://wa.me/5533999359508" target="_blank" rel="noopener">(33) 99935-9508</a>.</p>
+    </div>
+  </section>
+
+  <!-- ===== download ===== -->
+  <section id="download" class="secao largura">
+    <div class="download-caixa">
+      <div>
+        <h2>Prefere instalar no seu computador?</h2>
+        <p class="intro" id="versaoAtual">A versão instalada, com teste grátis de 7 dias. Seus dados ficam na sua
+          máquina e o sistema funciona sem internet.</p>
+        <p class="nota">Já usa o GeFinance? Rode o instalador da versão nova por cima: dados e licença são mantidos.
+          Depois de assinar, a chave de liberação chega por e-mail.</p>
+      </div>
+      <div class="downloads">
+        <a class="download" id="dlWindows" href="https://github.com/ronniericarth/gefinance-downloads/releases/latest">
+          <span class="so">Windows</span>
+          <span class="req">Windows 10 ou 11, 64 bits. Instalador .exe</span>
+        </a>
+        <a class="download" id="dlLinux" href="https://github.com/ronniericarth/gefinance-downloads/releases/latest">
+          <span class="so">Linux</span>
+          <span class="req">Fedora. Pacote .rpm</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== dúvidas ===== -->
+  <section id="duvidas" class="secao largura duvidas-secao">
+    <div class="duvidas-lado">
+      <h2>Dúvidas de quem está chegando</h2>
+      <p class="intro">Não achou a sua? Escreva para
+        <a href="mailto:contato@gefinance.app.br">contato@gefinance.app.br</a> ou chame no
+        <a href="https://wa.me/5533999359508" target="_blank" rel="noopener">WhatsApp (33) 99935-9508</a>.</p>
+    </div>
+    <div class="duvidas">
+      <details>
+        <summary>Onde ficam os meus dados?</summary>
+        <p>Depende da forma que você escolher. <b>Na versão instalada</b>, lançamentos, extratos e relatórios ficam
+          no banco de dados do seu computador ou do servidor da empresa, e não saem de lá. <b>Na versão online</b>,
+          ficam em servidores que contratamos, e cada conta tem seu próprio banco de dados, separado dos demais:
+          uma consulta feita na sua conta não alcança os dados de outro cliente. A
+          <a href="privacidade.html">política de privacidade</a> descreve isso em detalhe.</p>
+      </details>
+      <details>
+        <summary>Preciso de internet para usar?</summary>
+        <p>Na versão online, sim — ela roda no navegador. Na versão instalada, não: depois de instalada funciona sem
+          internet, que só é necessária para receber a chave por e-mail e ser avisado de versões novas.</p>
+      </details>
+      <details>
+        <summary>Posso usar em mais de um computador ou no celular?</summary>
+        <p>Sim, nas duas. Na online, basta abrir o link da sua conta em qualquer aparelho. Na instalada, os outros
+          computadores, tablets e celulares da mesma rede acessam pelo navegador. Em ambos os casos cada pessoa tem
+          seu usuário e suas permissões.</p>
+      </details>
+      <details>
+        <summary>Funciona no Mac?</summary>
+        <p>Na versão online, sim, como em qualquer aparelho com navegador. O instalador é para Windows e Linux; um
+          Mac na mesma rede usa normalmente pelo navegador, acessando o computador onde o GeFinance está instalado.</p>
+      </details>
+      <details>
+        <summary>O que acontece quando o teste grátis termina?</summary>
+        <p>O sistema para de abrir até a assinatura entrar — na versão online, assinando dentro do próprio sistema;
+          na instalada, ativando a chave que chega por e-mail. Nada é apagado: tudo o que você lançou no teste
+          continua lá quando voltar.</p>
+      </details>
+      <details>
+        <summary>E se eu não renovar a assinatura?</summary>
+        <p>O sistema deixa de abrir, mas seus dados não são apagados por isso. Na versão instalada eles permanecem
+          no seu computador, com os backups. Na online, ficam guardados por 90 dias, prazo em que você pode pedir
+          uma cópia ou reativar a conta; depois disso são apagados em definitivo.</p>
+      </details>
+      <details>
+        <summary>Posso cancelar quando quiser?</summary>
+        <p>Pode, sem multa. O cancelamento interrompe as cobranças seguintes e você usa até o fim do período já
+          pago. Compras pela internet também podem ser desistidas em até 7 dias, conforme o Código de Defesa do
+          Consumidor.</p>
+      </details>
+      <details>
+        <summary>Já uso o GeFinance instalado. Consigo levar meus dados para a versão online?</summary>
+        <p>Sim, e você mesmo faz. Atualize o GeFinance instalado, abra <b>Sistema &gt; Meus dados</b> e baixe o
+          arquivo com tudo o que está lá. Crie a conta online e, antes de lançar qualquer coisa, envie esse arquivo
+          na mesma tela. Contas, lançamentos, cadastros, orçamentos e usuários vão juntos, e cada pessoa entra com
+          a senha de sempre. O caminho inverso, da online para a instalada, funciona igual.</p>
+      </details>
+      <details>
+        <summary>Quais bancos posso importar?</summary>
+        <p>Qualquer banco que forneça o extrato em OFX (quase todos, em "Exportar extrato"), CSV ou PDF gerado pelo próprio banco. Faturas de cartão em PDF ou CSV também. PDF escaneado ou foto não funciona.</p>
+      </details>
+      <details>
+        <summary>Vou trocar de computador. E agora?</summary>
+        <p>Faça um backup no computador antigo, instale o GeFinance no novo e restaure o backup: tudo volta, inclusive a licença. Se precisar de ajuda, escreva para <a href="mailto:contato@gefinance.app.br">contato@gefinance.app.br</a> ou chame no WhatsApp <a href="https://wa.me/5533999359508" target="_blank" rel="noopener">(33) 99935-9508</a>.</p>
+      </details>
+      <details>
+        <summary>Como recebo a chave depois de pagar?</summary>
+        <p>Na tela <b>Licença</b> do sistema, clique em <b>Enviar código por e-mail</b>, anexe o comprovante e envie. A chave chega por e-mail; cole na mesma tela e clique em <b>Ativar</b>.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===== chamada final ===== -->
+  <section class="largura" id="chamadaFinal">
+    <div class="chamada">
+      <h2>Veja o seu mês com os números do seu banco</h2>
+      <p>Crie a conta, importe um extrato e confira o fluxo de caixa em poucos minutos.</p>
+      <a class="botao botao-claro" href="https://app.gefinance.app.br/cadastro">Criar conta grátis</a>
+      <p class="nota">7 dias grátis, sem cartão.</p>
+    </div>
+  </section>
+
+</main>
+
+<div class="barra-fixa" id="barraFixa" hidden>
+  <span>7 dias grátis. Depois, a partir de <b>R$&nbsp;19,90</b> por mês.</span>
+  <a class="botao botao-pequeno" href="https://app.gefinance.app.br/cadastro">Começar</a>
+</div>
+
+<footer class="rodape">
+  <div class="largura rodape-linha">
+    <div class="rodape-marca">
+      <a class="marca" href="#"><img src="img/logo.png" width="28" height="28" alt=""><span>GeFinance</span></a>
+      <p>Controle financeiro para a sua casa e o seu negócio, online ou instalado.</p>
+    </div>
+    <nav aria-label="Produto">
+      <h3>Produto</h3>
+      <a href="#recursos">Recursos</a>
+      <a href="#telas">Telas</a>
+      <a href="#precos">Preços</a>
+      <a href="#download">Versão instalada</a>
+    </nav>
+    <nav aria-label="Atendimento">
+      <h3>Atendimento</h3>
+      <a href="mailto:contato@gefinance.app.br">contato@gefinance.app.br</a>
+      <a href="https://wa.me/5533999359508" target="_blank" rel="noopener">WhatsApp (33) 99935-9508</a>
+      <a href="#duvidas">Dúvidas frequentes</a>
+    </nav>
+    <nav aria-label="Documentos">
+      <h3>Documentos</h3>
+      <a href="termos.html">Termos de uso</a>
+      <a href="privacidade.html">Privacidade</a>
+    </nav>
+  </div>
+  <div class="largura">
+    <p class="cnpj">Ronnie Ricarth Cabral Granja LTDA, CNPJ 53.668.092/0001-49</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>
